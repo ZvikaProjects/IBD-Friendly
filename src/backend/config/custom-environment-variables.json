@@ -1,0 +1,4 @@
+{
+    "jwtPrivateKey": "IBD_jwtPrivateKey",
+    "db": "DB_ConnectionString"
+}
