@@ -2,10 +2,12 @@ const Joi = require('joi');
 const mongoose = require('mongoose');
 const express = require('express');
 const config = require('config');
+const cors = require("cors")
 const users = require('./routers/users');
 const userinfo = require('./routers/info');
 const auth = require("./routers/auth");
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use('/api/users', users);
 app.use('/api/info',userinfo);
@@ -32,3 +34,4 @@ connect();
 const port = (process.env.port || 3000);
 const server = app.listen(port, () => { console.log(`lisening on port ${port}...`) });
 module.exports = server;
+

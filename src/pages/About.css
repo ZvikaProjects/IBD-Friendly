@@ -1,0 +1,30 @@
+.img {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 93rem;
+    height: 50rem; /* This ensures the image covers the full viewport height */
+    
+  }
+  
+/* This is the text font*/  
+.text-display{
+    background-color: rgb(224,224,224);
+    padding: 5px; /* Add padding for better readability */
+    display: inline; /*In this way the background will be just for the words*/
+    font-size: 25px;
+    color: black;
+    line-height: 1.6;
+}  
+
+/* This is style for under line*/
+.text-underLine {
+    background-color: rgb(224,224,224);
+    padding: 5px; /* Add padding for better readability */
+    display: inline; /*In this way the background will be just for the words*/
+    font-size: 25px;
+    color: black;
+    line-height: 1.6;
+    text-decoration: underline;
+  }
