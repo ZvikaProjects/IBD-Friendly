@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import image from "../images/background.jpg";
+import { Link } from "react-router-dom";
 import "./Login.css";
 import axios from "axios";
 
@@ -10,6 +11,7 @@ function Login()
     
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [color,setColor] = useState({backgroundColor:"#3498db"});
     async function handleSubmit(event){
 
         event.preventDefault();
@@ -32,7 +34,11 @@ function Login()
         <h1>Login </h1><br/>   
         <input value={email} type="text" id="Email" name="Email" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
         <input value={password} type="password" id="Password" name="Password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
-        <button className="button-display" type="submit">Send</button>
+        <Link   to="/home" style={{ textDecoration: 'none' }}>
+        <button className="button-display" type="submit" style={color} onMouseOver={e => setColor({backgroundColor:"#00008B"})}
+        onMouseOut={e => setColor({backgroundColor:"#3498db"})}>Send
+        </button>
+        </Link>
         </form>
     </div>
     )

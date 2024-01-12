@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Register.css";
 import image from "../images/background.jpg";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function Register(){
@@ -8,6 +9,7 @@ function Register(){
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [heading,setHeading] = useState("Register");
+    const [color,setColor] = useState({backgroundColor:"#3498db"});
 
 
     function handleChange(event){
@@ -41,7 +43,11 @@ function Register(){
             <input type="text" placeholder="what is your name?" value={name} onChange={(e) => setName(e.target.value)} />
             <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
             <input type="text" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <button type="submit">Send</button>
+            <Link to="/home" style={{ textDecoration: 'none' }} >
+            <button type="submit" style={color} onMouseOver={(e)=>setColor({backgroundColor:"#00008B"} )}
+            onMouseOut={e => setColor({backgroundColor:"#3498db"})}>Send
+            </button>
+            </Link>
         </form>
     </div>
     )
