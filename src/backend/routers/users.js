@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const _ = require('lodash');
 
 
+// add user to the db (sign up).
 router.post('/', async (req, res) => {
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
@@ -15,7 +16,7 @@ router.post('/', async (req, res) => {
     // create new user.
     user = new User(_.pick(req.body, ['name', 'email', 'password']));
 
-    /// needs to add here sending verification link to the user email...
+    /// Todo add here sending verification link to the user email...
 
 
     const salt = await bcrypt.genSalt(10);

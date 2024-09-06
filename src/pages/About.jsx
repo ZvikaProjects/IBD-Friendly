@@ -1,6 +1,5 @@
 import React from "react";
 import "./About.css"
-// import Navbar from "../components/NavBar";
 
 const About = () => {
   const textStyle = {
@@ -12,8 +11,6 @@ const About = () => {
 
   return (
     <div className="img">
-      <div>
-      </div>
       <h1>About Our IBD Food Compass</h1>
       <p className="text-display">
         Welcome to IBD Food Compass, your trusted companion on your journey to

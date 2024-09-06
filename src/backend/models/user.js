@@ -28,6 +28,7 @@ function validateUser2(user) {
 /// create generateTken function which create a token for user.
 User.prototype.generateAuthToken = function () {
     const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin }, config.get('jwtPrivateKey'));
+    return token;
 }
 
 

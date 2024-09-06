@@ -6,12 +6,20 @@ const cors = require("cors")
 const users = require('./routers/users');
 const userinfo = require('./routers/info');
 const auth = require("./routers/auth");
+
+// import bard router:
+const bard = require('./routers/bard');
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api/users', users);
 app.use('/api/info',userinfo);
 app.use("/api/auth",auth);
+
+// bard router:
+app.use('/api/bard', bard);
+
 // checks that the private key is set.
 if (!config.get('jwtPrivateKey')) {
     throw new Error('FATAL ERROR:jwtPrivateKey is not defined.');

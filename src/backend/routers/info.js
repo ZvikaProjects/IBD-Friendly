@@ -10,9 +10,8 @@ const NotFoundMessage = 'Invalid Id.'
 /// info API: 
 
 /// get information of user using is id.
-router.get('/:id', async (req, res) => {
-
-    const userInfo = await UserInfo.find({userId:req.params.id});
+router.get('/:userId', async (req, res) => {
+    const userInfo = await UserInfo.findOne({userId:req.params.userId});
     if (!userInfo) return res.status(404).send(NotFoundMessage);
     res.send(userInfo);
 });
@@ -46,29 +45,28 @@ router.post('/', async (req, res) => {
 });
 
 /// update information of user.
-router.put('/:id', async (req, res) => {
+router.put('/:userId', async (req, res) => {
 
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
-
-    const userInfo = await UserInfo.findByID(req.params.id);
+    const userInfo = await UserInfo.findOne({userId:req.params.userId});
     if (!userInfo) return res.status(404).send(NotFoundMessage);
-
     if (req.body.userId !== userInfo.userId) // checks that the user does not try to update another user.
         return res.status(400).send('id of user does not match to user information id');
-
-
     try {
-        const updatedInfo = await UserInfo.findByIdAndUpdate(req.body.userId, {
+        const updatedInfo = await UserInfo.findByIdAndUpdate(userInfo._id, {
             userId: req.body.userId,
-            blackList: req.body.blackList,
-            whiteList: req.body.whiteList,
+            $addToSet:{
+                blackList: { $each: req.body.blackList } ,
+                whiteList: { $each: req.body.whiteList } 
+            },
             recipe: req.body.recipe
         },
             { new: true });
         res.send(updatedInfo);
     }
     catch (e) {
+
         for (field in e.errors)
             console.log(e.errors[field].message);
     }

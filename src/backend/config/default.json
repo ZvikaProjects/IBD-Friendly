@@ -1,4 +1,4 @@
 {
-    "jwtPrivateKey": "",
-    "db": ""
+    "jwtPrivateKey": "12345",
+    "db": "mongodb+srv://zvikababo:zvika2002@cluster0.h5hevja.mongodb.net/test2?retryWrites=true&w=majority"
 }
